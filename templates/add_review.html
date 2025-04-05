@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Review for <span class="text-primary">{{ movie.title }}</span></h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Your Review</label>
+        <textarea name="content" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit Review</button>
+</form>
+{% endblock %}

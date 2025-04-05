@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Movie - <span class="text-primary">{{ movie.title }}</span></h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" name="title" value="{{ movie.title }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Genre</label>
+        <input type="text" name="genre" value="{{ movie.genre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Year</label>
+        <input type="number" name="year" value="{{ movie.year }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        <textarea name="description" class="form-control" required>{{ movie.description }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label>Poster URL</label>
+        <input type="text" name="poster_url" value="{{ movie.poster_url }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-warning">Update Movie</button>
+</form>
+{% endblock %}
