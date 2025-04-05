@@ -10,7 +10,7 @@
         <p><strong>Genre:</strong> {{ movie.genre }}</p>
         <p><strong>Year:</strong> {{ movie.year }}</p>
         <p>{{ movie.description }}</p>
-        <a href="{{ url_for('edit_movie', id=movie.id) }}" class="btn btn-warning mb-3">Edit Movie</a>
+        <a href="{{ url_for('edit_movie', id=movie._id) }}" class="btn btn-warning mb-3">Edit Movie</a>
     </div>
 </div>
 
@@ -24,14 +24,14 @@
             <strong>{{ review.username }}</strong>: {{ review.content }}
         </div>
         <div class="btn-group">
-            <a href="{{ url_for('edit_review', movie_id=movie.id, review_index=loop.index0) }}"
+            <a href="{{ url_for('edit_review', id=movie._id, review_index=loop.index0) }}"
                 class="btn btn-sm btn-outline-warning">Edit</a>
-            <a href="{{ url_for('delete_review', movie_id=movie.id, review_index=loop.index0) }}"
+            <a href="{{ url_for('delete_review', id=movie._id, review_index=loop.index0) }}"
                 class="btn btn-sm btn-outline-danger">Delete</a>
         </div>
     </li>
     {% endfor %}
 </ul>
 
-<a href="{{ url_for('add_review', movie_id=movie.id) }}" class="btn btn-success">Add Review</a>
+<a href="{{ url_for('add_review', id=movie._id) }}" class="btn btn-success">Add Review</a>
 {% endblock %}
