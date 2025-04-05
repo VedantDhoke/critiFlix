@@ -24,6 +24,7 @@ def login():
         user = users_col.find_one({'username': uname, 'password': pwd})
         if user:
             session['username'] = uname
+            # flash('Logged in successfully!')
             return redirect(url_for('index'))
         flash('Invalid credentials')
     return render_template('login.html')
@@ -43,7 +44,7 @@ def register():
 @app.route('/logout')
 def logout():
     session.clear()
-    flash('Logged out.')
+    # flash('Logged out.')
     return redirect(url_for('index'))
 
 @app.route('/add_movie', methods=['GET', 'POST'])
