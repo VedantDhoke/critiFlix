@@ -119,6 +119,16 @@ def delete_review(review_id):
     if review:
         reviews_col.delete_one({'_id': ObjectId(review_id)})
     return redirect(url_for('movie_detail', id=review['movie_id']))
+@app.route('/search')
+def search_movies():
+    query = request.args.get('query', '').strip()
+    if query:
+        # Case-insensitive search on title
+        movies = list(movies_col.find({'title': {'$regex': query, '$options': 'i'}}))
+    else:
+        movies = list(movies_col.find())
+    return render_template('index.html', movies=movies)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
